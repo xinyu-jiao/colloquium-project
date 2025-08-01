@@ -89,7 +89,8 @@ main {
   font-weight: 400;                   /* Set font weight to normal (not bold) */
   margin-bottom: 20px;                /* Add 20 pixels of space below this element */
   margin-top: 20px;                   /* Add 20 pixels of space above this element */
-  color: #ccc;                        /* Set text color to light gray */
+  color: #8dd1da;                        /* Set text color to light gray */
+  text-align: center;
 }
 
 /* Style for Network Graph Visualization title (subsection) */
