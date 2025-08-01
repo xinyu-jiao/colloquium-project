@@ -9,8 +9,8 @@
 /* Style the entire body of the webpage */
 body {
   font-family: 'Roboto', sans-serif;  /* Set the font to Roboto, with sans-serif as backup */
-  background-color: #ffffff;          /* Set background color to white */
-  color: #111;                        /* Set text color to dark gray (almost black) */
+  background-color: #000000;          /* Set background color to black */
+  color: #ffffff;                     /* Set text color to white */
   margin: 0;                          /* Remove default spacing around the body */
   padding: 0;                         /* Remove default internal spacing */
 }
@@ -25,13 +25,13 @@ header {
   justify-content: space-between;     /* Spread items evenly across the header */
   align-items: center;                /* Center items vertically */
   padding: 24px 40px;                 /* Add 24px top/bottom, 40px left/right spacing inside */
-  border-bottom: 1px solid #ccc;      /* Add a light gray line at the bottom */
+  border-bottom: 1px solid #444;      /* Add a dark gray line at the bottom */
   font-size: 18px;                    /* Set font size to 18 pixels */
 }
 
 /* Style the left section of the header (institution name) */
 header .left {
-  color: #aaa;                        /* Set text color to light gray */
+  color: #bbb;                        /* Set text color to light gray */
 }
 
 /* Style the center section of the header (main title) */
@@ -43,12 +43,12 @@ header .center {
 /* Style the span element inside the center section (subtitle) */
 header .center span {
   font-size: 12px;                    /* Make this text smaller (12 pixels) */
-  color: #888;                        /* Set text color to medium gray */
+  color: #aaa;                        /* Set text color to medium gray */
 }
 
 /* Style links in the right section of the header */
 header .right a {
-  color: #000;                        /* Set link color to black */
+  color: #ffffff;                     /* Set link color to white */
   text-decoration: none;              /* Remove the underline from links */
   font-weight: 400;                   /* Set font weight to normal */
 }
@@ -71,7 +71,7 @@ main {
 /* Style the project year/date */
 .project-meta {
   font-size: 14px;                    /* Set font size to 14 pixels */
-  color: #999;                        /* Set text color to light gray */
+  color: #aaa;                        /* Set text color to light gray */
   margin-bottom: 8px;                 /* Add 8 pixels of space below this element */
 }
 
@@ -89,7 +89,7 @@ main {
   font-weight: 400;                   /* Set font weight to normal (not bold) */
   margin-bottom: 20px;                /* Add 20 pixels of space below this element */
   margin-top: 20px;                   /* Add 20 pixels of space above this element */
-  color: #666;                        /* Set text color to medium gray */
+  color: #ccc;                        /* Set text color to light gray */
 }
 
 /* Style for Network Graph Visualization title (subsection) */
@@ -98,14 +98,14 @@ main {
   font-weight: 400;                   /* Set font weight to normal (not bold) */
   margin-bottom: 4px;                 /* Add 4 pixels of space below this element */
   margin-top: 20px;                   /* Add 20 pixels of space above this element */
-  color: #666;                        /* Set text color to medium gray */
+  color: #ccc;                        /* Set text color to light gray */
   margin-left: 20px;                  /* Add 20 pixels of space to the left (indentation) */
 }
 
 /* Style the project subtitle */
 .project-subtitle {
-  font-size: 16px;                    /* Set font size to 16 pixels */
-  color: #999;                        /* Set text color to light gray */
+  font-size: 20px;                    /* Set font size to 16 pixels */
+  color: #aaa;                        /* Set text color to light gray */
   margin-bottom: 24px;                /* Add 24 pixels of space below this element */
 }
 
@@ -119,7 +119,7 @@ main {
   margin-bottom: 20px;                /* Add 20 pixels of space below this element */
   font-size: 16px;                    /* Set font size to 16 pixels */
   line-height: 1.6;                   /* Set space between lines to 1.6 times the font size */
-  color: #333;                        /* Set text color to dark gray */
+  color: #ddd;                        /* Set text color to light gray */
 }
 
 /* ============================================================================
@@ -132,16 +132,16 @@ main {
   height: 400px;                      /* Set the height to 400 pixels */
   margin: 20px 0;                     /* Add 20px top/bottom margin */
   margin-left: 20px;                  /* Add 20px left margin (indentation) */
-  border: 1px solid #ddd;             /* Add a light gray border around the container */
+  border: 1px solid #444;             /* Add a dark gray border around the container */
   border-radius: 4px;                 /* Add slightly rounded corners */
-  background-color: #f0f0f0;         /* Set background color to light gray */
+  background-color: #222;             /* Set background color to dark gray */
 }
 
 /* Style tooltips (popup information when hovering over graph nodes) */
 .tooltip {
   position: absolute;                  /* Position the tooltip absolutely so we can place it anywhere */
-  background: rgba(0, 0, 0, 0.8);    /* Semi-transparent black background */
-  color: white;                       /* White text color */
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  color: black;                       /* Black text color */
   padding: 8px;                       /* Add 8px of spacing inside the tooltip */
   border-radius: 4px;                 /* Add slightly rounded corners */
   font-size: 12px;                    /* Small font size */
