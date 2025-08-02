@@ -68,79 +68,18 @@
     
     
     <!-- Community of practice section -->
-    <div class="project-title">Community of Practice</div>
+    <div class="project-title">Community of Practice Network</div>
     <div class="section-content">
+      <div id="network-container"></div>
       
-      <div class="project-subtitle">Platform Tools</div>
-      
-      <strong>Microsoft — Seeing AI</strong><br>
-      <img src="./static/img/img_seeing_ai.jpg" alt="Seeing AI interface" style="max-width:100%; height:auto; margin: 10px 0;"><br>
-      Its strength is availability: point-and-describe lowers friction for reading and scene cues. But precisely because it works well in episodic tasks, it entrenches a "caption as truth" habit where recognition is centralized, thresholds are opaque, and the user is funneled into waiting for a single authoritative answer. This narrows the interactional space to request/response and obscures model uncertainty and failure modes. My system treats its outputs as provisional signals—rendered as graded, spatialized sonics—so users can modulate granularity, hear confidence, and decide when to pivot rather than accept one-shot captions as the default.<br><br>
-
-      <strong>Be My Eyes / Be My AI</strong><br>
-      Human-in-the-loop plus strong visual Q&A removes barriers for many micro-tasks, yet the exchange remains transactional and answer-maximizing: get the description, move on. That logic pushes cognitive risk onto the user when the model is wrong and, over time, deepens dependence on black-box mediation. I recast the help layer as <em>ambient and revisable</em>—short, low-burden sonic cues that can be re-queried, with user-controlled escalation to human support. In this framing, "assistance" is a spectrum of situated checks rather than a single, definitive description.<br><br>
-
-      
-
-      <div class="project-subtitle">Practitioner-Advocates</div>
-      
-      <strong>NYPL "Dimensions"</strong><br>
-      <img src="./static/img/img_dimensions.jpg" alt="NYPL Dimensions project" style="max-width:100%; height:auto; margin: 10px 0;"><br>
-      Dimensions proves that when blind practitioners author tactile media, authorship and literacy shift to the community. The risk is that the model can still rely on fixed spaces, specialized tools, and a tactile-first skill ladder that newcomers may not have—leaving portability and broader participation unresolved. I adopt the governance lesson (co-ownership and public pedagogy) but translate it into low-barrier "sound-making studios," where presets and mappings are co-authored, portable, and protected from enclosure.<br><br>
-
-      <strong>Chris Downey</strong><br>
-      Downey's practice shows that sound and touch are not afterthoughts but primary structures for spatial cognition. The danger is the heroic universalization of those insights across wildly different acoustics; what orients in a calm lobby may overwhelm in a reverberant station. I keep the spatial ethos—sound as place-making, not beeps—but require situated validation across diverse soundscapes before promoting any cue to a default.<br><br>
-
-      
-
-      <div class="project-subtitle">Academic Research</div>
-      
-      <strong>Penn State A11y Lab — Natural-sound sonification</strong><br>
-      <img src="./static/img/img_psu.png" alt="Penn State A11y Lab research" style="max-width:100%; height:auto; margin: 10px 0;"><br>
-      Susurrus maps each bar in a chart to a distinct natural sound (e.g., different birds) and sets its loudness with LUFS so that perceived volume is proportional to bar height; the mapped sounds are played <strong>in parallel</strong> on a loop over a mild ambient background with random intervals. Users can then select one or more bars via number keys to isolate those sounds and request text-to-speech descriptions—an interaction model aligned with AISA actions (gist, navigate, select, details-on-demand).<br><br>
-
-      The parallel "audio graph" helps users separate categories, but the design leans on loudness while the ambient bed and random intervals can complicate comparison at scale; the authors' own studies show loudness works best, interval mapping confuses, duration mapping slows ordering, and parallel streams should be capped to ~five to avoid overload—constraints that the figure's looping, backgrounded mix doesn't reveal. In applying this technique, I'd keep the parallel LUFS mapping but add rules that limit concurrent voices, suppress or duck the ambience, and privilege stable timing when users are comparing bars—so the interface remains legible beyond small N.<br><br>
-
-      
-
-      <div class="project-subtitle">Artist/Speculative Practice</div>
-      
-      <strong>Yuri Suzuki — <em>Ambient Machine</em></strong><br>
-      <img src="./static/img/img_yuri.png" alt="Yuri Suzuki Ambient Machine" style="max-width:100%; height:auto; margin: 10px 0;"><br>
-      Yuri Suzuki's <em>Ambient Machine</em> proves that a tactile, layer-based approach to everyday sound can be inviting and legible: with banks of switches shaping volume, reverb, and tempo, it lets people compose ambience without screens. Yet the very elegance of this parameterized grid narrows what sound can communicate in an interactive system. It centers preset materials and a fixed control surface, making the user a one-way "composer" rather than a dialogue partner; it cannot express system intent or uncertainty, risks masking critical environmental cues outside quiet interiors, and places a memory burden on users to recall switch mappings—issues compounded by the lack of remapping, context awareness, and long-term fatigue management.<br><br>
-
-      For a sound-first accessibility interface, I'd borrow the tactile immediacy and tunable layers but reframe them as a conversational medium. That means adding audible channels for confidence/intent, building anti-masking rules and context-aware sparsity, designing fatigue-sensitive timing, and enabling user-remappable controls paired with clear auditory confirmations. The sound library should be community-coauthored and governed (not just curated presets), while adaptation remains local and short-lived by default, portable on the user's terms. Finally, spatial cues and any haptics should be validated across diverse real-world acoustics and kept optional—ensuring ambience becomes an accountable interaction language rather than a decorative soundtrack.<br><br>
-
-      
-
-      <div class="project-subtitle">Design Stance Distilled</div>
-      Co-production over consumption; sound as primary structure, validated <em>in situ</em>; and power-aware defaults that make adaptation audible, keep traces local and ephemeral, and give users practical refusal and revision—not just permissions buried in policy.<br><br>
-
-      <div class="project-subtitle">Relations with Precedent Studies</div>
-      The project of my precedent study - "Measuring Diversity" - gives me the insights about caring more about those minorities. But I won't plan to build this project based on the precedent study since it is more algorithmic than what I want to present.<br><br>
-
-      <div class="project-subtitle">My Project's Positioning</div>
-      <ul>
-        <li><strong>Synthesis and Contribution</strong>
-          <ul>
-            <li>Combines academic rigor with corporate critique and artistic inspiration.</li>
-            <li>Offers a reinterpretation of assistive technology—from functional tools to experiential, emotionally supportive companions.</li>
-            <li>Explicitly challenges the visual-dominant, screen-reader paradigm.</li>
-          </ul>
-        </li>
-        <li><strong>Audience vs. Community</strong>
-          <ul>
-            <li><em><strong>Primary Audience</strong></em>: Blind and low-vision users. The design must prioritize their lived experience, participatory feedback, and emotional connection.</li>
-            <li><em><strong>Community of Practice</strong></em>: Includes:
-              <ul>
-                <li>Corporate teams (Microsoft, Be My Eyes and etc.).</li>
-                <li>HCI and accessibility researchers.</li>
-                <li>Sound artists and speculative designers.</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <!-- Modal for displaying node details -->
+      <div id="node-modal" class="modal">
+        <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <h3 id="modal-title"></h3>
+          <div id="modal-body"></div>
+        </div>
+      </div>
     </div>
     
     
@@ -230,47 +169,14 @@
     <img src="./static/img/img_poster.png" alt="Poster" style="max-width:100%; height:auto;"><br>
     
     <div class="project-title">Proposal — Sound-Reactive Interface Object</div>
-    <div class="section-content">
-      <p><strong>Concept</strong><br>
-        A tactile object for blind/low-vision users that responds to touch with sound cues—part tool, part companion.</p>
-
-      <p><strong>Form</strong></p>
-      <ul>
-        <li>Hand-sized, palm-friendly shape</li>
-        <li>Soft wood or silicone shell with subtle texture</li>
-        <li>Embedded microcontroller (e.g., Raspberry Pi Pico / Arduino Nano)</li>
-        <li>Small speaker or vibration motor for feedback</li>
-      </ul>
-
-      <p><strong>Functions</strong></p>
-      <ul>
-        <li>Touch = Confirm tone</li>
-        <li>Long Press = Context-aware voice message</li>
-        <li>Rotate/Flip = Mode switch (ambient / guided)</li>
-        <li>Idle = Breathing pulse or gentle hum</li>
-      </ul>
-
-      <p><strong>References</strong><br>
-        Yuri Suzuki's Ambient Machine; “Be My Eyes” haptic alternatives; metaphors of music box / pocket object / worry stone.
-      </p>
-
-      <p><strong>Material Qualities</strong><br>
-        Warmth, intimacy, calm; sounds tuned to natural tones (wind chimes, wood knocks, soft sine waves).
-      </p>
-
-      <p><strong>Exhibition Display</strong><br>
-        Placed next to the spectrogram mural; visitors can touch and interact; optional ambient audio loop.
-      </p>
-
-      <p><strong>Purpose</strong><br>
-        Demonstrates tangible AI interaction; offers poetic sonic feedback; bridges computation with sensory embodiment.
-      </p>
+    <img src="./static/img/img_material.png" alt="Material" style="max-width:100%; height:auto;"><br>
     </div>
 
   </main>
 
-  <!-- Load our JavaScript file that creates the network graph -->
+  <!-- Load our JavaScript files -->
   <script src="graph-from-csv.js"></script>
+  <script src="./static/script/network.js"></script>
 
 </body>
 <!-- End of body - all visible content goes above this line -->
