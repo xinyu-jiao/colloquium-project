@@ -385,7 +385,250 @@ class CommunityNetwork {
   }
 }
 
+// Rhetorical Arguments Network Graph
+class RhetoricalNetwork {
+  constructor() {
+    this.container = document.getElementById('rhetorical-network-container');
+    this.modal = document.getElementById('rhetorical-node-modal');
+    this.modalTitle = document.getElementById('rhetorical-modal-title');
+    this.modalBody = document.getElementById('rhetorical-modal-body');
+    this.modalClose = document.querySelector('.rhetorical-modal-close');
+    
+    this.nodes = this.initializeNodes();
+    this.connections = [];
+    
+    this.init();
+  }
+  
+  initializeNodes() {
+    return [
+      {
+        id: 'center',
+        title: 'Rhetorical Arguments',
+        type: 'center',
+        x: 25,
+        y: 50,
+        content: `Core arguments for a sound-first AI interface approach.`
+      },
+      // Category nodes
+      {
+        id: 'critical-view',
+        title: 'A Critical View of Mainstream \'Assistive\' Technologies',
+        type: 'category',
+        x: 70,
+        y: 25,
+        content: `
+          <p>Critical analysis of current mainstream assistive technology approaches and their limitations:</p>
+          <ul style="margin-left: 20px; line-height: 1.8;">
+            <li><strong>Sight-normativity & burden shift</strong> — Screen-centric; shifts the cost of system errors onto blind users.</li>
+            <li><strong>"Captions as truth"</strong> — One-shot descriptions hide uncertainty; lacks revisability.</li>
+            <li><strong>Passive requester framing</strong> — Frames users as passive requesters rather than co-navigators.</li>
+            <li><strong>Layered alerts → overload</strong> — Layered alerts create memory load and vigilance fatigue.</li>
+            <li><strong>False autonomy & lock-in</strong> — Platform lock-in; autonomy is performative/illusory.</li>
+          </ul>
+        `
+      },
+      {
+        id: 'sound-first',
+        title: 'A Sound-First Interaction Paradigm',
+        type: 'category',
+        x: 70,
+        y: 50,
+        content: `
+          <p>Proposed alternative approach that prioritizes sound as the primary interaction medium:</p>
+          <ul style="margin-left: 20px; line-height: 1.8;">
+            <li><strong>Audible intent & uncertainty</strong> — Convey confidence/uncertainty and spatial cues through sound.</li>
+            <li><strong>User-controlled granularity & pace</strong> — Users control speed, detail level, and re-say strategies.</li>
+            <li><strong>Context-aware sparse cues</strong> — Sparse, situational cues validated in situ.</li>
+            <li><strong>Co-authored sound maps</strong> — Community-authored and remappable sound maps.</li>
+            <li><strong>Local, reversible adaptation</strong> — On-device, reversible adaptations users can roll back.</li>
+          </ul>
+        `
+      },
+      {
+        id: 'success-evaluation',
+        title: 'Success, Evaluation & Governance',
+        type: 'category',
+        x: 70,
+        y: 75,
+        content: `
+          <p>Framework for evaluating success and governing sound-first interfaces:</p>
+          <ul style="margin-left: 20px; line-height: 1.8;">
+            <li><strong>Redefining success</strong> — Prioritize recovery time, reduced cognitive load, and independent completion—not accuracy alone.</li>
+            <li><strong>Uncertainty governance</strong> — Make uncertainty perceivable and controllable (expose ≠ over-explain).</li>
+            <li><strong>Controls & consent</strong> — Explicit switches, data egress indicators, export/delete for local acoustic logs.</li>
+            <li><strong>Edge-first privacy</strong> — Default on-device inference; no always-on hotword.</li>
+            <li><strong>Methods & accountability</strong> — User-in-the-loop testing, granularity A/B, auditable/ accountable logs.</li>
+          </ul>
+        `
+      }
+    ];
+  }
+  
+  init() {
+    this.createNodes();
+    this.createConnections();
+    this.bindEvents();
+  }
+  
+  createNodes() {
+    this.nodes.forEach(node => {
+      const nodeElement = document.createElement('div');
+      nodeElement.className = `rhetorical-node ${node.type}`;
+      nodeElement.textContent = node.title;
+      nodeElement.dataset.nodeId = node.id;
+      
+             // Position nodes
+       let nodeWidth, nodeHeight;
+       switch(node.type) {
+         case 'center': nodeWidth = 140; nodeHeight = 40; break;
+         case 'category': nodeWidth = 140; nodeHeight = 40; break;
+         case 'grandchild': nodeWidth = 100; nodeHeight = 30; break;
+         default: nodeWidth = 100; nodeHeight = 30;
+       }
+      
+      nodeElement.style.left = `calc(${node.x}% - ${nodeWidth/2}px)`;
+      nodeElement.style.top = `calc(${node.y}% - ${nodeHeight/2}px)`;
+      
+      this.container.appendChild(nodeElement);
+    });
+  }
+  
+  createConnections() {
+    const centerNode = this.nodes.find(n => n.type === 'center');
+    const categoryNodes = this.nodes.filter(n => n.type === 'category');
+    
+    // Connect center to all category nodes
+    categoryNodes.forEach(categoryNode => {
+      this.createConnection(centerNode, categoryNode);
+    });
+  }
+  
+  createConnection(node1, node2) {
+    const connection = document.createElement('div');
+    connection.className = 'rhetorical-connection';
+    
+    // Different styles for different connection types
+    if (node1.type === 'center') {
+      connection.style.background = 'linear-gradient(90deg, #8dd1da, #555)';
+      connection.style.height = '2px';
+    } else if (node1.type === 'category') {
+      connection.style.background = 'linear-gradient(90deg, #666, #444)';
+      connection.style.height = '1px';
+      connection.style.opacity = '0.8';
+    }
+    
+    const containerRect = this.container.getBoundingClientRect();
+    const containerWidth = containerRect.width;
+    const containerHeight = containerRect.height;
+    
+         // Get node dimensions for center calculation
+     const getNodeDimensions = (node) => {
+       switch(node.type) {
+         case 'center': return { width: 140, height: 40 };
+         case 'category': return { width: 140, height: 40 };
+         case 'grandchild': return { width: 100, height: 30 };
+         default: return { width: 100, height: 30 };
+       }
+     };
+    
+    // Calculate center positions of nodes
+    const node1Dimensions = getNodeDimensions(node1);
+    const node2Dimensions = getNodeDimensions(node2);
+    
+    const x1Center = (node1.x / 100) * containerWidth;
+    const y1Center = (node1.y / 100) * containerHeight;
+    const x2Center = (node2.x / 100) * containerWidth;
+    const y2Center = (node2.y / 100) * containerHeight;
+    
+    // Calculate connection line from center to center
+    const deltaX = x2Center - x1Center;
+    const deltaY = y2Center - y1Center;
+    const totalLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+    
+    // Calculate start and end points (edge of rectangles, not centers)
+    const node1Radius = Math.min(node1Dimensions.width, node1Dimensions.height) / 2;
+    const node2Radius = Math.min(node2Dimensions.width, node2Dimensions.height) / 2;
+    
+    const startX = x1Center + (node1Radius * deltaX) / totalLength;
+    const startY = y1Center + (node1Radius * deltaY) / totalLength;
+    const endX = x2Center - (node2Radius * deltaX) / totalLength;
+    const endY = y2Center - (node2Radius * deltaY) / totalLength;
+    
+    // Final connection length (from edge to edge)
+    const connectionLength = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+    
+    connection.style.left = `${startX}px`;
+    connection.style.top = `${startY}px`;
+    connection.style.width = `${connectionLength}px`;
+    connection.style.transform = `rotate(${angle}deg)`;
+    connection.style.transformOrigin = 'left center';
+    connection.style.zIndex = '1';
+    
+    this.container.appendChild(connection);
+  }
+  
+  bindEvents() {
+    // Node click events
+    this.container.addEventListener('click', (e) => {
+      if (e.target.classList.contains('rhetorical-node')) {
+        const nodeId = e.target.dataset.nodeId;
+        const node = this.nodes.find(n => n.id === nodeId);
+        if (node) {
+          this.showModal(node);
+        }
+      }
+    });
+    
+    // Modal close events
+    this.modalClose.addEventListener('click', () => {
+      this.hideModal();
+    });
+    
+    this.modal.addEventListener('click', (e) => {
+      if (e.target === this.modal) {
+        this.hideModal();
+      }
+    });
+    
+    // Escape key to close modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.modal.style.display === 'block') {
+        this.hideModal();
+      }
+    });
+    
+    // Responsive updates
+    window.addEventListener('resize', () => {
+      this.updateLayout();
+    });
+  }
+  
+  showModal(node) {
+    this.modalTitle.textContent = node.title;
+    this.modalBody.innerHTML = node.content;
+    this.modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  hideModal() {
+    this.modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  updateLayout() {
+    // Clear existing connections
+    const connections = this.container.querySelectorAll('.rhetorical-connection');
+    connections.forEach(conn => conn.remove());
+    
+    // Recreate connections with new dimensions
+    this.createConnections();
+  }
+}
+
 // Initialize the network when the page loads
 document.addEventListener('DOMContentLoaded', () => {
   new CommunityNetwork();
+  new RhetoricalNetwork();
 }); 
