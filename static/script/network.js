@@ -504,7 +504,7 @@ class RhetoricalNetwork {
     });
   }
   
-  createConnection(node1, node2) {
+    createConnection(node1, node2) {
     const connection = document.createElement('div');
     connection.className = 'rhetorical-connection';
     
@@ -522,15 +522,15 @@ class RhetoricalNetwork {
     const containerWidth = containerRect.width;
     const containerHeight = containerRect.height;
     
-         // Get node dimensions for center calculation
-     const getNodeDimensions = (node) => {
-       switch(node.type) {
-         case 'center': return { width: 140, height: 40 };
-         case 'category': return { width: 140, height: 40 };
-         case 'grandchild': return { width: 100, height: 30 };
-         default: return { width: 100, height: 30 };
-       }
-     };
+    // Get node dimensions for center calculation
+    const getNodeDimensions = (node) => {
+      switch(node.type) {
+        case 'center': return { width: 140, height: 40 };
+        case 'category': return { width: 140, height: 40 };
+        case 'grandchild': return { width: 100, height: 30 };
+        default: return { width: 100, height: 30 };
+      }
+    };
     
     // Calculate center positions of nodes
     const node1Dimensions = getNodeDimensions(node1);
@@ -547,20 +547,90 @@ class RhetoricalNetwork {
     const totalLength = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
     
-    // Calculate start and end points (edge of rectangles, not centers)
-    const node1Radius = Math.min(node1Dimensions.width, node1Dimensions.height) / 2;
-    const node2Radius = Math.min(node2Dimensions.width, node2Dimensions.height) / 2;
+    // Calculate intersection points with rectangle edges
+    const getIntersectionPoint = (centerX, centerY, width, height, directionX, directionY) => {
+      const halfWidth = width / 2;
+      const halfHeight = height / 2;
+      
+      // Normalize direction
+      const length = Math.sqrt(directionX * directionX + directionY * directionY);
+      const dx = directionX / length;
+      const dy = directionY / length;
+      
+      // Calculate intersection with each edge
+      const intersections = [];
+      
+      // Right edge (when going right)
+      if (dx > 0) {
+        const t = halfWidth / dx;
+        const y = t * dy;
+        if (Math.abs(y) <= halfHeight) {
+          intersections.push({ x: centerX + halfWidth, y: centerY + y });
+        }
+      }
+      
+      // Left edge (when going left)
+      if (dx < 0) {
+        const t = -halfWidth / dx;
+        const y = t * dy;
+        if (Math.abs(y) <= halfHeight) {
+          intersections.push({ x: centerX - halfWidth, y: centerY + y });
+        }
+      }
+      
+      // Bottom edge (when going down)
+      if (dy > 0) {
+        const t = halfHeight / dy;
+        const x = t * dx;
+        if (Math.abs(x) <= halfWidth) {
+          intersections.push({ x: centerX + x, y: centerY + halfHeight });
+        }
+      }
+      
+      // Top edge (when going up)
+      if (dy < 0) {
+        const t = -halfHeight / dy;
+        const x = t * dx;
+        if (Math.abs(x) <= halfWidth) {
+          intersections.push({ x: centerX + x, y: centerY - halfHeight });
+        }
+      }
+      
+      // Return the closest intersection point
+      if (intersections.length > 0) {
+        return intersections.reduce((closest, current) => {
+          const currentDist = Math.sqrt(Math.pow(current.x - centerX, 2) + Math.pow(current.y - centerY, 2));
+          const closestDist = Math.sqrt(Math.pow(closest.x - centerX, 2) + Math.pow(closest.y - centerY, 2));
+          return currentDist < closestDist ? current : closest;
+        });
+      }
+      
+      // Fallback to center if no intersection found
+      return { x: centerX, y: centerY };
+    };
     
-    const startX = x1Center + (node1Radius * deltaX) / totalLength;
-    const startY = y1Center + (node1Radius * deltaY) / totalLength;
-    const endX = x2Center - (node2Radius * deltaX) / totalLength;
-    const endY = y2Center - (node2Radius * deltaY) / totalLength;
+    // Calculate start point (edge of node1 towards node2)
+    const startPoint = getIntersectionPoint(
+      x1Center, y1Center, 
+      node1Dimensions.width, node1Dimensions.height,
+      deltaX, deltaY
+    );
+    
+    // Calculate end point (edge of node2 towards node1)
+    const endPoint = getIntersectionPoint(
+      x2Center, y2Center,
+      node2Dimensions.width, node2Dimensions.height,
+      -deltaX, -deltaY
+    );
     
     // Final connection length (from edge to edge)
-    const connectionLength = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+    const connectionLength = Math.sqrt(
+      Math.pow(endPoint.x - startPoint.x, 2) + 
+      Math.pow(endPoint.y - startPoint.y, 2)
+    );
     
-    connection.style.left = `${startX}px`;
-    connection.style.top = `${startY}px`;
+    connection.style.left = `${startPoint.x}px`;
+    connection.style.top = `${startPoint.y}px`;
     connection.style.width = `${connectionLength}px`;
     connection.style.transform = `rotate(${angle}deg)`;
     connection.style.transformOrigin = 'left center';
