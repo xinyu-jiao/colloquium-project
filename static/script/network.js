@@ -406,61 +406,172 @@ class RhetoricalNetwork {
         id: 'center',
         title: 'Rhetorical Arguments',
         type: 'center',
-        x: 25,
+        x: 15,
         y: 50,
         content: `Core arguments for a sound-first AI interface approach.`
       },
-      // Category nodes
+      // Second level category nodes
       {
         id: 'critical-view',
         title: 'A Critical View of Mainstream \'Assistive\' Technologies',
         type: 'category',
-        x: 70,
-        y: 25,
-        content: `
-          <p>Critical analysis of current mainstream assistive technology approaches and their limitations:</p>
-          <ul style="margin-left: 20px; line-height: 1.8;">
-            <li><strong>Sight-normativity & burden shift</strong> — Screen-centric; shifts the cost of system errors onto blind users.</li>
-            <li><strong>"Captions as truth"</strong> — One-shot descriptions hide uncertainty; lacks revisability.</li>
-            <li><strong>Passive requester framing</strong> — Frames users as passive requesters rather than co-navigators.</li>
-            <li><strong>Layered alerts → overload</strong> — Layered alerts create memory load and vigilance fatigue.</li>
-            <li><strong>False autonomy & lock-in</strong> — Platform lock-in; autonomy is performative/illusory.</li>
-          </ul>
-        `
+        x: 40,
+        y: 20,
+        content: `Critical analysis of current mainstream assistive technology approaches and their limitations.`
       },
       {
         id: 'sound-first',
         title: 'A Sound-First Interaction Paradigm',
         type: 'category',
-        x: 70,
+        x: 40,
         y: 50,
-        content: `
-          <p>Proposed alternative approach that prioritizes sound as the primary interaction medium:</p>
-          <ul style="margin-left: 20px; line-height: 1.8;">
-            <li><strong>Audible intent & uncertainty</strong> — Convey confidence/uncertainty and spatial cues through sound.</li>
-            <li><strong>User-controlled granularity & pace</strong> — Users control speed, detail level, and re-say strategies.</li>
-            <li><strong>Context-aware sparse cues</strong> — Sparse, situational cues validated in situ.</li>
-            <li><strong>Co-authored sound maps</strong> — Community-authored and remappable sound maps.</li>
-            <li><strong>Local, reversible adaptation</strong> — On-device, reversible adaptations users can roll back.</li>
-          </ul>
-        `
+        content: `Proposed alternative approach that prioritizes sound as the primary interaction medium.`
       },
       {
         id: 'success-evaluation',
         title: 'Success, Evaluation & Governance',
         type: 'category',
+        x: 40,
+        y: 80,
+        content: `Framework for evaluating success and governing sound-first interfaces.`
+      },
+      // Third level nodes - Critical View children
+      {
+        id: 'sight-normativity',
+        title: 'Sight-normativity & burden shift',
+        type: 'grandchild',
+        parent: 'critical-view',
         x: 70,
-        y: 75,
-        content: `
-          <p>Framework for evaluating success and governing sound-first interfaces:</p>
-          <ul style="margin-left: 20px; line-height: 1.8;">
-            <li><strong>Redefining success</strong> — Prioritize recovery time, reduced cognitive load, and independent completion—not accuracy alone.</li>
-            <li><strong>Uncertainty governance</strong> — Make uncertainty perceivable and controllable (expose ≠ over-explain).</li>
-            <li><strong>Controls & consent</strong> — Explicit switches, data egress indicators, export/delete for local acoustic logs.</li>
-            <li><strong>Edge-first privacy</strong> — Default on-device inference; no always-on hotword.</li>
-            <li><strong>Methods & accountability</strong> — User-in-the-loop testing, granularity A/B, auditable/ accountable logs.</li>
-          </ul>
-        `
+        y: 8,
+        content: `Screen-centric; shifts the cost of system errors onto blind users.`
+      },
+      {
+        id: 'captions-truth',
+        title: '"Captions as truth"',
+        type: 'grandchild',
+        parent: 'critical-view',
+        x: 70,
+        y: 14,
+        content: `One-shot descriptions hide uncertainty; lacks revisability.`
+      },
+      {
+        id: 'passive-requester',
+        title: 'Passive requester framing',
+        type: 'grandchild',
+        parent: 'critical-view',
+        x: 70,
+        y: 20,
+        content: `Frames users as passive requesters rather than co-navigators.`
+      },
+      {
+        id: 'layered-alerts',
+        title: 'Layered alerts → overload',
+        type: 'grandchild',
+        parent: 'critical-view',
+        x: 70,
+        y: 26,
+        content: `Layered alerts create memory load and vigilance fatigue.`
+      },
+      {
+        id: 'false-autonomy',
+        title: 'False autonomy & lock-in',
+        type: 'grandchild',
+        parent: 'critical-view',
+        x: 70,
+        y: 32,
+        content: `Platform lock-in; autonomy is performative/illusory.`
+      },
+      // Third level nodes - Sound-First children
+      {
+        id: 'audible-intent',
+        title: 'Audible intent & uncertainty',
+        type: 'grandchild',
+        parent: 'sound-first',
+        x: 70,
+        y: 38,
+        content: `Convey confidence/uncertainty and spatial cues through sound.`
+      },
+      {
+        id: 'user-controlled',
+        title: 'User-controlled granularity & pace',
+        type: 'grandchild',
+        parent: 'sound-first',
+        x: 70,
+        y: 44,
+        content: `Users control speed, detail level, and re-say strategies.`
+      },
+      {
+        id: 'context-aware',
+        title: 'Context-aware sparse cues',
+        type: 'grandchild',
+        parent: 'sound-first',
+        x: 70,
+        y: 50,
+        content: `Sparse, situational cues validated in situ.`
+      },
+      {
+        id: 'co-authored',
+        title: 'Co-authored sound maps',
+        type: 'grandchild',
+        parent: 'sound-first',
+        x: 70,
+        y: 56,
+        content: `Community-authored and remappable sound maps.`
+      },
+      {
+        id: 'local-adaptation',
+        title: 'Local, reversible adaptation',
+        type: 'grandchild',
+        parent: 'sound-first',
+        x: 70,
+        y: 62,
+        content: `On-device, reversible adaptations users can roll back.`
+      },
+      // Third level nodes - Success & Evaluation children
+      {
+        id: 'redefining-success',
+        title: 'Redefining success',
+        type: 'grandchild',
+        parent: 'success-evaluation',
+        x: 70,
+        y: 68,
+        content: `Prioritize recovery time, reduced cognitive load, and independent completion—not accuracy alone.`
+      },
+      {
+        id: 'uncertainty-governance',
+        title: 'Uncertainty governance',
+        type: 'grandchild',
+        parent: 'success-evaluation',
+        x: 70,
+        y: 74,
+        content: `Make uncertainty perceivable and controllable (expose ≠ over-explain).`
+      },
+      {
+        id: 'controls-consent',
+        title: 'Controls & consent',
+        type: 'grandchild',
+        parent: 'success-evaluation',
+        x: 70,
+        y: 80,
+        content: `Explicit switches, data egress indicators, export/delete for local acoustic logs.`
+      },
+      {
+        id: 'edge-privacy',
+        title: 'Edge-first privacy',
+        type: 'grandchild',
+        parent: 'success-evaluation',
+        x: 70,
+        y: 86,
+        content: `Default on-device inference; no always-on hotword.`
+      },
+      {
+        id: 'methods-accountability',
+        title: 'Methods & accountability',
+        type: 'grandchild',
+        parent: 'success-evaluation',
+        x: 70,
+        y: 92,
+        content: `User-in-the-loop testing, granularity A/B, auditable/ accountable logs.`
       }
     ];
   }
@@ -497,10 +608,19 @@ class RhetoricalNetwork {
   createConnections() {
     const centerNode = this.nodes.find(n => n.type === 'center');
     const categoryNodes = this.nodes.filter(n => n.type === 'category');
+    const grandchildNodes = this.nodes.filter(n => n.type === 'grandchild');
     
-    // Connect center to all category nodes
+    // Connect center to all category nodes (level 1 to level 2)
     categoryNodes.forEach(categoryNode => {
       this.createConnection(centerNode, categoryNode);
+    });
+    
+    // Connect categories to their grandchildren (level 2 to level 3)
+    grandchildNodes.forEach(grandchildNode => {
+      const parentCategory = this.nodes.find(n => n.id === grandchildNode.parent);
+      if (parentCategory) {
+        this.createConnection(parentCategory, grandchildNode);
+      }
     });
   }
   
